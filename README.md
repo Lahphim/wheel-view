@@ -52,7 +52,6 @@ Customise
 ```java
     final int IMAGE_WIDTH = 230;
     final int IMAGE_HEIGHT = 230;
-});
 ```
 
 2) Customisable all images
@@ -63,7 +62,6 @@ Customise
             android.R.drawable.radiobutton_on_background,
             android.R.drawable.ic_delete
     };
-});
 ```
 
 [1]: ./wheel-view.gif
