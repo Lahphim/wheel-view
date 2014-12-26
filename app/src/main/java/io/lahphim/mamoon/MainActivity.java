@@ -11,6 +11,7 @@ import kankan.wheel.widget.adapters.AbstractWheelAdapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AnticipateOvershootInterpolator;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class MainActivity extends Activity {
@@ -27,7 +29,16 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         initWheel(R.id.slotwheel);
+
+        Button randomBtn = (Button) findViewById(R.id.random_btn);
+        randomBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mixWheel(R.id.slotwheel);
+            }
+        });
     }
 
     // Wheel scrolled flag
@@ -81,12 +92,21 @@ public class MainActivity extends Activity {
     }
 
     /**
+     * Mixes wheel
+     * @param id the wheel id
+     */
+    private void mixWheel(int id) {
+        WheelView wheel = getWheel(id);
+        wheel.scroll(-350 + (int)(Math.random() * 50), 2000);
+    }
+
+    /**
      * Slot machine adapter
      */
     private class SlotMachineAdapter extends AbstractWheelAdapter {
         // Image size
-        final int IMAGE_WIDTH = 300;
-        final int IMAGE_HEIGHT = 300;
+        final int IMAGE_WIDTH = 230;
+        final int IMAGE_HEIGHT = 230;
 
         // Slot machine symbols
         private final int items[] = new int[] {
