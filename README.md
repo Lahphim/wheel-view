@@ -42,7 +42,6 @@ Usage
     wheel.setEnabled(true);                             // set TRUE to enable scrollable
     wheel.setVertical(false);                           // set FALSE to render as horizontal
     wheel.setInterpolator(new AnticipateOvershootInterpolator());   // set animation
-});
 ```
 
 Customise
